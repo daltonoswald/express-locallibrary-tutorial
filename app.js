@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config();
 
 const compression = require('compression');
 const helmet = require('helmet');
@@ -15,7 +16,7 @@ var app = express();
 
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
-const dev_db_url = "mongodb+srv://daltonoswald:pass4localL@cluster0.ednmac2.mongodb.net/local_library?retryWrites=true&w=majority&appName=Cluster0";
+const dev_db_url = process.env.DEV_DB_URL
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 main().catch((err) => console.log(err));
